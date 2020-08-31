@@ -1,0 +1,42 @@
+﻿<meta name="viewport" content="width=device-width, initial-scale=1.0">
+@model List<Groups>
+@{
+    ViewData["Title"] = "ListGroups";
+}
+
+
+<table class=" flex-row table text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th>Group Name</th>
+            <th>Group Type</th>
+            <th></th>
+        </tr>
+    </thead>
+
+        @foreach (Groups g in Model)
+        {
+            <tr>
+                <td><a class="groupname btn-block btn" href="../Group/GroupMembers?id=@g.Id">@g.Name</a></td>
+                <td>@g.Type</td>
+                @*<td><a href="../Match/GroupRestLists?gid=@g.Id" class="btn btn-outline-primary">What's For Dinner</a></td>*@
+            <td>
+                <a href="../Home/GroupList?id=@g.Id" class="btn btn-outline-success btn-group-sm">What's For Dinner</a>
+                <a href="../Group/InviteToGroup?id=@g.Id" class="btn btn-outline-primary btn-group-sm">Invite</a>
+                <a href="../Group/LeaveGroup?id=@g.Id" class="btn btn-outline-danger btn-group-sm">Leave</a>
+            </td>
+                @*<td><a href="../Group/LeaveGroup?id=@g.Id" class="btn btn-outline-danger btn-group-sm">Leave</a></td>*@
+            </tr>
+        }
+</table>
+
+<a href="../Group/NewGroup" class="btn btn-dark">Make a New Group</a>
+
+<style>
+    a.dinnerApp:hover{
+        height: 75px; 
+    }
+    a.groupname:hover{
+        background-color:dodgerblue
+    }
+</style>
